@@ -125,18 +125,23 @@
           margin-right: auto;
           border: 1px solid #ddd;
           padding: 5px;
+		  backgr ound-color: lightblue;
       }
       table {
         width: 100%;
       }
       
       .monday {
-        background-color: lightgreen;
+        background-color: AliceBlue;
         font-style: bold;
       }
-	  .usa {
-	    font-style: italic;
-		color: darkgreen;
+	  
+	  .commas {
+	  background-color: lightyellow;
+	  }
+	  .swiss {
+	  color: DarkSlateBlue;
+	  
 	  }
     </style>
   </head>
@@ -168,7 +173,7 @@
       <main>
           <div class="main">
 
-              <h1 style="color: #426ccf;">First Day of the Week For Supported Locales</h1>
+              <h1 style="color: #426ccf;">First Day of the Week and Number for Supported Locales</h1>
               <section id='introd'>
                   <h2></h2>
                   <table>
@@ -184,10 +189,10 @@
                         <td>Sunday</td>
 						<td class="usa">123,456,789.987</td>
                       </tr>
-                      <tr class="monday">
+                      <tr>
                         <td>English Australia</td>
                         <td>en-au</td>
-                        <td>Monday</td>
+                        <td class="monday">Monday</td>
 						<td class="usa">123,456,789.987</td>
                       </tr>
                       <tr>
@@ -196,7 +201,7 @@
                         <td>Sunday</td>
 						<td class="usa">123,456,789.987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>English Great Britain</td>
                         <td>en-gb</td>
                         <td class="monday">Monday</td>
@@ -208,71 +213,71 @@
                         <td>Sunday</td>
 						<td class="usa">123,456,789.987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Bosnian</td>
                         <td>bs</td>
                         <td class="monday">Monday</td>
 						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Bulgarian</td>
                         <td>bg</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Catalan</td>
                         <td>ca</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-					<tr class="monday">
+					<tr>
                         <td>Croatian</td>
                         <td>hr</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Czech</td>
                         <td>cs</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Danish</td>
                         <td>da</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-					<tr class="monday">
+					<tr>
                         <td>Dutch</td>
                         <td>nl</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>German Germany</td>
                         <td>de-de</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>German Switzerland</td>
                         <td>de-ch</td>
                         <td class="monday">Monday</td>
-						<td>123’456’789.987</td>
+						<td class="commas swiss">123’456’789.987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Greek</td>
                         <td>el</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Spanish Spain</td>
                         <td>es-es</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
                     <tr>
                         <td>Spanish Mexico</td>
@@ -280,29 +285,29 @@
                         <td>Sunday</td>
 						<td class="usa">123,456,789.987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Estonian</td>
                         <td>et</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Finnish</td>
                         <td>fi</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>French France</td>
                         <td>fr-fr</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>French Switzerland</td>
                         <td>fr-ch</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
                     <tr>
                         <td>Hebrew</td>
@@ -310,30 +315,30 @@
                         <td>Sunday</td>
 						<td class="usa">123,456,789.987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Hungarian</td>
                         <td>hu</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
                     
-                    <tr class="monday">
+                    <tr>
                         <td>Italian Italy</td>
                         <td>it-it</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Italian Switzerland</td>
                         <td>it-ch</td>
                         <td class="monday">Monday</td>
-						<td>123’456’789.987</td>
+						<td class="commas swiss">123’456’789.987</td>
                     </tr>
                     <tr>
                         <td>Indonesian</td>
                         <td>id</td>
                         <td>Sunday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
                     <tr>
                         <td>Japanese</td>
@@ -347,78 +352,78 @@
                         <td>Sunday</td>
 						<td class="usa">123,456,789.987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Lithanian</td>
                         <td>lt</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Latvian</td>
                         <td>lv</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
                     
-                    <tr class="monday">
+                    <tr>
                         <td>Norwegian</td>
                         <td>nb</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Polish</td>
                         <td>pl</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
                     <tr>
                         <td>Portuguese Brazil</td>
                         <td>pt-br</td>
                         <td>Sunday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
                     <tr>
                         <td>Portuguese Portugal</td>
                         <td>pt-pt</td>
                         <td>Sunday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Romanian</td>
                         <td>ro</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Russian</td>
                         <td>ru</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Serbian</td>
                         <td>sr</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Slovenian</td>
                         <td>sl</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Slovak</td>
                         <td>sk</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Swedish</td>
                         <td>sv</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
                     <tr>
                         <td>Thai</td>
@@ -426,23 +431,23 @@
                         <td>Sunday</td>
 						<td class="usa">123,456,789.987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Turkish</td>
                         <td>tr</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Ukrainian</td>
                         <td>uk</td>
                         <td class="monday">Monday</td>
-						<td>123 456 789,987</td>
+						<td class="commas">123 456 789,987</td>
                     </tr>
-                    <tr class="monday">
+                    <tr>
                         <td>Vietnamese</td>
                         <td>vi</td>
                         <td class="monday">Monday</td>
-						<td>123.456.789,987</td>
+						<td class="commas">123.456.789,987</td>
                     </tr>
                     <tr>
                         <td>Chinese Simplified</td>
