@@ -1,0 +1,457 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classification</title>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      html {
+          scroll-behavior: smooth;
+      }
+      main > nav {
+          position: sticky;
+          top: 1rem;
+          align-self: start;
+          font-size: 15.2px;
+      }
+      .section-nav li.active > a {
+          color: #333;
+          font-weight: 500;
+      }
+      .section-nav {
+          padding-left: 0;
+          border-left: 1px solid #efefef;
+          position: sticky;
+          top: 1rem;
+          align-self: start;
+          font-size: 10.2px;
+          height: 700px;
+          overflow-y: auto;
+      }
+      .section-nav a {
+          text-decoration: none;
+          display: block;
+          padding: 0.125rem 0;
+          color: rgb(177, 176, 176);
+          transition: all 50ms ease-in-out;
+      }
+      .section-nav a:hover,
+      .section-nav a:focus {
+          color: #666;
+      }
+      * {
+          box-sizing: border-box;
+      }
+      html,
+      body {
+          background: #fff;
+      }
+      body {
+          font-family: font-family: 'Avenir Next', Avenir Next;
+      }
+      nav ol {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+      }
+      nav ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+      }
+      li {
+          margin-left: 1rem;
+      }
+      h1 {
+          font-weight: 300;
+      }
+      main {
+          display: grid;
+          grid-template-columns: 1fr 18em;
+          max-width: 100em;
+          width: 95%;
+          margin: 0 auto;
+      }
+      section {
+          padding-bottom: 0.5rem;
+      }
+      h3 {
+          color: #8a8883;
+      }
+      h4 {
+        color: #50535A;
+        font-size: 1.2rem;
+        padding-top: 1.2rem;
+      }
+      b {
+          color: cadetblue;
+      }
+      figure, figcaption {
+          text-align: center;
+      }
+      table, th, td {
+
+          margin-left: auto;
+          margin-right: auto;
+          border: 1px solid #ddd;
+          padding: 5px;
+		  
+      }
+      table {
+        width: 100%;
+      }
+      
+       .cjk {
+		background-color: #ffe6ff;
+		
+	} 
+	  
+	  .alphabet {
+        background-color: #d9ffcc;
+      }
+	  
+	  .rtl {
+        background-color: #b3ff99;
+		        
+      }
+	  .empty {
+        background-color: #ffffff;
+        border-bottom: 0;
+		border-top: 0;
+		padding-left: 20px;
+      }
+	  .easy {
+        font-style: oblique;
+		color: #5c5c8a;
+      }
+	  
+	  .cyrillic {
+        
+        font-color: #800000;
+      }
+	  
+	  .hard {
+        font-weight: bold;
+        
+      }
+	  
+	  .latin {
+        background-color: #e6ffff;
+        
+      }
+	  
+	  .diacritic {
+		background-color: #66ffff;
+		font-family: Sofia;
+	}
+	  .diacriticn {
+		background-color: #99ffff;
+		font-family: Sofia;
+	}
+	  .nodi {
+		background-color: #b3ffff;
+		font-family: Sofia;
+	)
+	.nodiacritic {
+		background-color: #ccffff;
+		}
+	  
+	
+	  
+    </style>
+  </head>
+  <body>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("id");
+            if (entry.intersectionRatio > 0) {
+              document
+                .querySelector(`nav li a[href="#${id}"]`)
+                .parentElement.classList.add("active");
+            } else {
+              document
+                .querySelector(`nav li a[href="#${id}"]`)
+                .parentElement.classList.remove("active");
+            }
+          });
+        });
+
+        // Track all sections that have an `id` applied
+        document.querySelectorAll("section[id]").forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
+    <div class="Content">
+      <main>
+          <div class="main">
+
+              <h1 style="color: #426ccf;">Languages classification, with locale codes</h1>
+              <section id='introd'>
+                  <h2></h2>
+				  <table>
+					<tr class ="latin"><td>Locales of English</td>
+					<td class ="diacritic">Latin-based script with diacritic characters</td></tr>
+					<tr>
+						<td></td><td class ="diacriticn easy">(Almost) No diacritic characters</td></tr>
+					<tr><td class ="alphabet">Alphabets other than Latin</td>
+					<td class ="rtl">Bidirectional (RTL) languages</td></tr>
+					<tr><td class ="hard">More issues with font display, compared to other languages within the same group</td>
+					<td class ="easy">Almost no issues with font display, compared to other languages within the same group</td></tr>
+										
+				  </table>
+                  <table>
+                    <tr>
+                        <th>Locale</th>
+                        <th>Locale code</th>
+                        <th>Script</th>
+						<th class="empty"></th>
+						<th>Locale</th>
+                        <th>Locale code</th>
+                        <th>Script</th>
+                    </tr>
+                    <tr class="latin easy">
+                        <td>English USA</td>
+                        <td>en-us</td>
+                        <td>Latin</td>
+						<td class="empty"></td>
+						<td>English Australia</td>
+                        <td>en-au</td>
+                        <td>Latin</td>
+                      </tr>
+                      
+                      <tr class="latin easy">
+                        <td>English Canada</td>
+                        <td>en-ca</td>
+                        <td class="latin">Latin</td>
+						<td class="empty"></td>
+						<td>English Great Britain</td>
+                        <td>en-gb</td>
+                        <td>Latin</td>
+                    </tr>
+                    
+                    <tr class="alphabet rtl">
+                        <td class="hard">Arabic</td>
+                        <td class="hard">ar</td>
+                        <td class="hard">Arabic</td>
+						<td class="empty"></td>
+						<td>Hebrew</td>
+                        <td>he</td>
+                        <td>Hebrew</td>
+                    </tr>
+					<tr class="cjk">
+                        <td>Japanese</td>
+                        <td>ja</td>
+                        <td>CJK</td>
+						<td class="empty"></td>
+                        <td class="easy">Korean</td>
+                        <td class="easy">ko</td>
+                        <td class="easy">CJK</td>
+                    </tr>
+					<tr class="cjk">
+                        <td>Chinese Simplified</td>
+                        <td>zh-cn</td>
+                        <td>CJK</td>
+						<td class="empty"></td>
+                        <td>Chinese Traditional Hong Kong</td>
+                        <td>zh-hk</td>
+                        <td>CJK</td>
+                    </tr>
+                    <tr class="cjk">
+                        <td>Chinese Traditional Taiwan</td>
+                        <td>zh-tw</td>
+                        <td>CJK</td>
+                    </tr>
+					
+					<tr class="alphabet">
+                        <td>Bulgarian</td>
+                        <td>bg</td>
+                        <td class="cyrillic alphabet">Cyrillic</td>
+						<td class="empty"></td>
+						<td>Greek</td>
+                        <td>el</td>
+                        <td class="nonlatin alphabet">Greek</td>
+                    </tr>
+					<tr class="alphabet cyrillic">
+                        <td>Russian</td>
+                        <td>ru</td>
+                        <td>Cyrillic</td>
+						<td class="empty"></td>
+                        <td>Ukrainian</td>
+                        <td>uk</td>
+                        <td>Cyrillic</td>
+                    </tr>
+					<tr class="alphabet hard">
+                        <td>Thai</td>
+                        <td>th</td>
+                        <td>Thai</td>
+                    </tr>
+					
+                    <tr class="latin diacritic">
+                        <td>Bosnian</td>
+                        <td>bs</td>
+                        <td class="diacritic">Latin-based</td>
+						<td class="empty"></td>
+                        <td>Catalan</td>
+                        <td>ca</td>
+                        <td class="latin diacritic">Latin-based</td>
+                    </tr>
+					<tr class="latin diacritic">
+                        <td>Croatian</td>
+                        <td>hr</td>
+                        <td class="latin diacritic">Latin-based</td>
+						<td class="empty"></td>
+                        <td>Czech</td>
+                        <td>cs</td>
+                        <td class="latin diacritic">Latin-based</td>
+                    </tr>
+                    <tr>
+                        <td class="latin diacritic">Danish</td>
+                        <td class="latin diacritic">da</td>
+                        <td class="latin diacritic">Latin-based</td>
+						<td class="empty"></td>
+                        <td class="diacriticn easy">Dutch</td>
+                        <td class="diacriticn easy">nl</td>
+                        <td class="diacriticn easy">Latin-based</td>
+                    </tr>
+                    <tr class="latin diacritic">
+                        <td>German Germany<br>German Switzerland<br>German Austria</td>
+                        <td>de-de<br>de-ch<br>de-at</td>
+                        <td class="latin diacritic">Latin-based</td>
+						<td class="empty"></td>
+                        <td>Spanish Spain<br>Spanish Mexico</td>
+                        <td>es-es<br>es-mx</td>
+                        <td class="latin diacritic">Latin-based</td>
+                    </tr>
+                    
+                    <tr class="latin diacritic">
+                        <td>Estonian</td>
+                        <td>et</td>
+                        <td class="latin diacritic">Latin-based</td>
+						<td class="empty"></td>
+                        <td>Finnish</td>
+                        <td>fi</td>
+                        <td class="latin diacritic">Latin-based</td>
+                    </tr>
+                    <tr class="latin diacritic">
+                        <td>French France<br>French Switzerland</td>
+                        <td>fr-fr<br>fr-ch</td>
+                        <td>Latin-based</td>
+						<td class="empty"></td>
+                        <td class="easy">Italian Italy<br>Italian Switzerland</td>
+                        <td class="easy">it-it<br>it-ch</td>
+                        <td class="easy">Latin</td>
+                    </tr>
+					
+                    <tr class="latin diacritic">
+                        <td>Hungarian</td>
+                        <td>hu</td>
+                        <td class="latin diacritic">Latin-based</td>
+						<td class="empty"></td>
+                        <td class="diacriticn easy">Indonesian</td>
+                        <td class="diacriticn easy">id</td>
+                        <td class="diacriticn easy">Latin</td>
+                    </tr>
+                    
+                    <tr class="latin diacritic">
+                        <td>Lithanian</td>
+                        <td>lt</td>
+                        <td class="latin diacritic">Latin-based</td>
+						<td class="empty"></td>					
+                        <td>Latvian</td>
+                        <td>lv</td>
+                        <td class="latin diacritic">Latin-based</td>
+                    </tr>
+                    
+                    <tr class="latin diacritic">
+                        <td>Norwegian</td>
+                        <td>nb</td>
+                        <td class="latin diacritic">Latin-based</td>
+						<td class="empty"></td>
+                        <td>Polish</td>
+                        <td>pl</td>
+                        <td class="latin diacritic">Latin-based</td>
+                    </tr>
+                    <tr class="latin diacritic">
+                        <td>Portuguese Brazil<br>Portuguese Portugal</td>
+                        <td>pt-br<br>pt-pt</td>
+                        <td>Latin-based</td>
+						<td class="empty"></td>
+                        <td>Romanian</td>
+                        <td>ro</td>
+                        <td class="latin diacritic">Latin-based</td>
+                    </tr>
+                    
+                    <tr class="latin diacritic">
+                        <td>Serbian</td>
+                        <td>sr</td>
+                        <td class="latin diacritic">Latin-based</td>
+						<td class="empty"></td>
+                        <td>Slovenian</td>
+                        <td>sl</td>
+                        <td class="latin diacritic">Latin-based</td>
+                    </tr>
+                    <tr class="latin diacritic">
+                        <td>Slovak</td>
+                        <td>sk</td>
+                        <td class="latin diacritic">Latin-based</td>
+						<td class="empty"></td>
+                        <td>Swedish</td>
+                        <td>sv</td>
+                        <td class="latin diacritic">Latin-based</td>
+                    </tr>
+                    
+                    <tr class="latin diacritic hard">
+                        <td>Turkish</td>
+                        <td>tr</td>
+                        <td>Latin-based</td>
+						<td class="empty"></td>					
+                        <td>Vietnamese</td>
+                        <td>vi</td>
+                        <td>Latin-based</td>
+                    </tr>
+                    
+                </table>
+
+                </section>
+
+
+              </section>
+          </div>
+
+      </main>
+  </div>
+  </body>
+</html>
